@@ -57,9 +57,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           envs: GITHUB_SHA
-          timeout: 200s
+          PATH : .deploy
           script: |
              sudo docker rm -f $(docker ps -qa)
              sudo docker pull ${{ secrets.DOCKER_REPO }}/mookive
-             docker-compose up -d
+             sudo docker-compose -f .deploy/docker-compose.yml up --build -d
              docker image prune -f
