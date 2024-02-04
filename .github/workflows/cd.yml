@@ -58,5 +58,7 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           envs: GITHUB_SHA
           script: |
-             docker pull ${{ secrets.DOCKER_REPO }}/mookive
-             docker run -d --name mookive -p 8080:8080 ${{ secrets.DOCKER_REPO }}/mookive
+             sudo docker rm -f $(docker ps -qa)
+             sudo docker pull ${{ secrets.DOCKER_REPO }}/my_recipe
+             docker-compose up -d
+             docker image prune -f
