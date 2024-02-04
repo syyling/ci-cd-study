@@ -57,6 +57,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           envs: GITHUB_SHA
+          timeout: 200s
           script: |
              sudo docker pull ${{ secrets.DOCKER_REPO }}/my_recipe
              docker-compose up -d
