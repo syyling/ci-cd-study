@@ -49,6 +49,7 @@ jobs:
           docker build -f $DOCKER_PATH -t ${{ secrets.DOCKER_REPO }}/mookive .
           docker push ${{ secrets.DOCKER_REPO }}/mookive
 
+
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         id: deploy
