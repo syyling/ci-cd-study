@@ -58,8 +58,6 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           envs: GITHUB_SHA
           script: |
-             docker stop mookive
-             docker rm mookive
-             sudo docker pull ${{ secrets.DOCKER_REPO }}/mookive
-             docker run -d --name goorm -p 8080:8080 ${{ secrets.DOCKER_REPO }}/mookive
+             docker pull ${{ secrets.DOCKER_REPO }}/mookive
+             docker run -d --name mookive -p 8080:8080 ${{ secrets.DOCKER_REPO }}/mookive
              docker rmi -f $(docker images -f "dangling=true" -q)
