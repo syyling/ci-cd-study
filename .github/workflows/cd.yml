@@ -61,6 +61,6 @@ jobs:
           script: |
              sudo docker rm -f $(docker ps -qa)
              sudo docker pull ${{ secrets.DOCKER_REPO }}/mookive
-             sudo cd /.deploy
+             cd /.deploy
              sudo docker-compose up
              docker image prune -f
