@@ -67,3 +67,5 @@ jobs:
             docker pull ${{ secrets.DOCKER_REPO }}/mookive
             docker-compose up -d
             docker image prune
+
+            
