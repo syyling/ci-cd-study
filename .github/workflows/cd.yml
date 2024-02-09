@@ -65,4 +65,3 @@ jobs:
              sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }} 
              docker-compose up -d
              docker rmi -f $(docker images -f "dangling=true" -q)
-             docker rmi -f $(docker images -f "dangling=true" -q)
