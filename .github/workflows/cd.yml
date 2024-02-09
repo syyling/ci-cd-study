@@ -62,4 +62,4 @@ jobs:
           script: |
             docker rm -f ${docker ps -qa}
             docker pull ${{ secrets.DOCKER_REPO }}/mookive
-            docke run -d -p 8080:8080 --name mookive ${{ secrets.DOCKER_REPO }}/mookive
+            docker run -d -p 8080:8080 --name mookive ${{ secrets.DOCKER_REPO }}/mookive
