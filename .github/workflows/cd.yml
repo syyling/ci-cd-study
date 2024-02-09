@@ -62,6 +62,5 @@ jobs:
           script: |
             touch ./docker-compose.yml
             echo  $DOCKER_COMPOSE > ./docker-compose.yml
-            docker stop ${{ secrets.DOCKER_REPO }}
-            docker rm ${{ secrets.DOCKER_REPO }} 
             docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }} 
+            docker-compose up -d
