@@ -63,7 +63,7 @@ jobs:
             touch ./docker-compose.yml
             echo "${{ secrets.DOCKER_COMPOSE }}" > ./docker-compose.yml
             docker stop mookive
-            docker rm -f ${docker ps -qa}
+            docker rm mookive
             docker pull ${{ secrets.DOCKER_REPO }}/mookive
             docker-compose up -d
             docker image prune
