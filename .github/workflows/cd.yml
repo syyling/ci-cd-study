@@ -58,6 +58,11 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           envs: GITHUB_SHA
           script: |
-             sudo docker pull ${{ secrets.DOCKER_REPO }}/mookive
-             docker run -d --name mookive -p 80:8080 ${{ secrets.DOCKER_REPO }}/mookive
+             touch ./docker-compose.yml
+             echo "${{ secrets.DOCKER_COMPOSE }}" > ./docker-compose.yml
+             docker stop ${{ secrets.DOCKER_REPO }}
+             docker rm ${{ secrets.DOCKER_REPO }} 
+             sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }} 
+             docker-compose up -d
+             docker rmi -f $(docker images -f "dangling=true" -q)
              docker rmi -f $(docker images -f "dangling=true" -q)
