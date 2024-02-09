@@ -61,6 +61,6 @@ jobs:
           envs: GITHUB_SHA
           script: |
             touch ./docker-compose.yml
-            echo  $DOCKER_COMPOSE > ./docker-compose.yml
+            echo  ${{ secrets.DOCKER_COMPOSE }} > ./docker-compose.yml
             docker pull ${{ secrets.DOCKER_REPO }}/mookive
             docker-compose up -d
